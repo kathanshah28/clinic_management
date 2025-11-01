@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "clinic-dashboard-476904",
+  "private_key_id": "cda10f095f952155ddf19e3cd85338b8d7376076",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQD3PHEvfKDLZpIM\nfdwCPwUMQNlNSHqI9O0HvijOFDYlpvS8Me+pVbRsL67u+SOv0y6Tci2ggjgGKk7K\n6w4OVX4UjF6CUh+yVlDMQr0rAJkfVsPmZxTvMd7+blqkNoLdElx8u++dtFha0yiP\ntO8sEfxYMJRF1ldjS1AOF6wBUnjuOMheGnDWuxu9Myz442dbyea7eExgX8cg/Dj+\nNWi7X+HZgfl7YvXOD8jXc9aMTX4SKuszR+4FVCsn1ckh5++b/Br0Bq4/GuzZCJNM\n+lERZB9xpYCK9xw0pAUcAGZ4GaWu3xcqz2exHfD36gW9+RVtPNTmOEz1dNB8by4M\n6DirYXzVAgMBAAECggEAJqgNrnYXEhaEiW14Y+WEnYjaMSo+9oENOqOx757bZIG5\nTF+mcFyVLEE8YeMUgF5NrwIwPiN+LQCad0HPXdBiOUZFVK0QharXUUiyGTIrvumr\nEbBWZpvumOuaQoi/Z1+ClIIyEf9rvS+87NNGfiaFxSg7VrwPx9ezubBb1Y0WmXB6\nvzis74wXWPRNOA4qlzq3TW187mwpOezat3csFKTdLnvjtbYD9Z3w6LhjBSb8hkjQ\nCUKRzEHItDh3OddLQV14fXuDJ5e1forEwKDF8nHd6hOUjzScCNamdaEOAjm5PlTV\n4hl0zOkgXekJGZ2s1cJdeaMGsnzq2ujYe+gWGPPTdQKBgQD9B0YyKiH80zdQmA9q\nTeaeywYEDAvuA7zdxlbzMiRwxrCI/b5kBr9pxeJE47xy3Erzu5N4IJZK+7WTU6YB\nyl4tMQGcv/BoOWmvhlGihJ0SFmWbfRzSUOAxhArA7VAcYqwQRwnlR7bFWwnzRneS\nHgG0zzvfDHoB8VdS0ZISRrEw2wKBgQD6I8DhDsFe8a/1WixJd5U4mJyYOh4+V8fM\nCHqp56TfvTmQOqVAkXpt8SIm0WnaiXWU1U0BOkTI0C82uO8iF3N2Hqg3RK85pLxP\n8TETADQLLzE9JjTyFqm8pvyGp/+8z6Hrtb6XdpIiUXd+TUPxmSaCMprJqNVMgvTL\npgygCMDgDwKBgG0qXUO5X86Hhh70a/ouP+iUqTTHycHXxP1d3Beys3wgjPudli3r\np1vIL1YPdzeLCZ9cd0RlstIJBQ7aEQ5GtBkFQq/RM7STyKAc8E2Qr3+lQBM0iGHI\n2OEkGcug12ZXv+qJ66ALL7S4EXPvHBljbtMGcctKw7zg1g76Me5Gp53vAoGAXH/a\nNJ+LPHvtkLJuzCAvi0VMKzLauj0lwjqkea4SlzZXUhGNyInDl2JjOa2ZElpgo9AY\n8MpGY2gw/XB35ch8RwLhO8bncU6M4JcViaw6kqQ59h3p2FgvHnc1zOnVNVIm045a\n05HiSlSL9qXF6VK0HdNu0AHiFrAarDBUXN2/zVsCgYEArm67QYarKezJNnFwnhw3\nm+jWdrCNjIGjN8ZpgikZ1rLNZbKvdLohqdq7EiM4x8r8oKWPGPM12masuogs5Kla\nUPqx28tonilxr2EmVPbx/ZLSbJTnvGr7NQPYCl6szdgPz2OTp141JEFhswAmNuQV\nsQJmhEigf7hk9T2icKMaa34=\n-----END PRIVATE KEY-----\n",
+  "client_email": "clinic-dashboard-sa@clinic-dashboard-476904.iam.gserviceaccount.com",
+  "client_id": "100344676091407438474",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/clinic-dashboard-sa%40clinic-dashboard-476904.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

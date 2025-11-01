@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Today's Patients</h2>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Patient ID</th>
+      <th>Name</th>
+      <th>Time</th>
+      <th>Visit Days</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody id="todayBody"></tbody>
+</table>
+
+<script>
+let pendingPatients = new Set();
+let attendedPatients = new Set(); // Track tick mark for dashboard only
+
+// Load today's patients from backend
+async function loadToday() {
+    try {
+        const res = await fetch('/api/patients/today');
+        const data = await res.json();
+        renderTable(data);
+    } catch(err) {
+        console.error("Error loading today's patients:", err);
+    }
+}
+
+// Render table dynamically
+function renderTable(data) {
+    const tbody = document.getElementById('todayBody');
+    tbody.innerHTML = '';
+
+    data.forEach(p => {
+        const tr = document.createElement('tr');
+        const visitCount = parseInt(p['Visit Count'] || '0', 10);
+        const patientId = p['Patient_ID'];
+
+        let actionBtn = `<button class="btn btn-sm btn-success" onclick="markYes('${patientId}')">✅ Yes</button>`;
+
+        if (pendingPatients.has(patientId)) {
+            // Step 2: Confirm + Undo
+            actionBtn = `<button class="btn btn-sm btn-primary" onclick="confirmAttend('${patientId}')">✔ Confirm</button>
+                         <button class="btn btn-sm btn-warning" onclick="cancelPending('${patientId}')">↩ Undo</button>`;
+        } else if (attendedPatients.has(patientId)) {
+            // Tick mark only on dashboard
+            actionBtn = `✔ Attended`;
+        }
+
+        tr.innerHTML = `
+            <td>${patientId}</td>
+            <td>${p['Name'] || ''}</td>
+            <td>${p['Time'] || ''}</td>
+            <td>${p['visit days'] || ''}</td>
+            <td>${actionBtn}</td>
+        `;
+        tbody.appendChild(tr);
+    });
+}
+
+// Step 1: click Yes → show Confirm + Undo
+function markYes(id) {
+    pendingPatients.add(id);
+    loadToday();
+}
+
+// Step 2: click Confirm → increment Visit Count in Google Sheet
+async function confirmAttend(id) {
+    try {
+        const res = await fetch(`/api/patients/${id}/attend`, {
+            method:'PUT',
+            headers:{'Content-Type':'application/json'},
+            body: JSON.stringify({action:'confirm'})
+        });
+        const result = await res.json();
+        if(result.status==='updated') {
+            pendingPatients.delete(id);        // remove from pending
+            attendedPatients.add(id);          // add tick mark in dashboard
+            loadToday();                       // reload table
+        } else {
+            alert('Error updating Visit Count');
+        }
+    } catch(err) {
+        console.error("Error confirming attendance:", err);
+    }
+}
+
+// Undo before Confirm → back to Yes button
+function cancelPending(id) {
+    pendingPatients.delete(id);
+    loadToday();
+}
+
+// Load table initially
+loadToday();
+</script>
+{% endblock %}

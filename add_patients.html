@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Add Patient</h2>
+<form id="addForm">
+  <div class="mb-3"><input class="form-control" placeholder="Patient ID" name="Patient_ID" required></div>
+  <div class="mb-3"><input class="form-control" placeholder="Name" name="Name" required></div>
+  <div class="mb-3"><input class="form-control" placeholder="Number" name="number" required></div>
+  <div class="mb-3"><input class="form-control" placeholder="Age" name="Age"></div>
+  <div class="mb-3"><input class="form-control" placeholder="Gender" name="Gender"></div>
+  <div class="mb-3"><input class="form-control" placeholder="Occupation" name="Occupation"></div>
+  <div class="mb-3"><input class="form-control" placeholder="Ref. by" name="Ref. by"></div>
+  <div class="mb-3"><input class="form-control" placeholder="Address" name="Address"></div>
+  <div class="mb-3"><input class="form-control" placeholder="Date of joining" name="Date of joining"></div>
+  <div class="mb-3"><input class="form-control" placeholder="Conditions" name="conditions"></div>
+  <div class="mb-3"><input class="form-control" placeholder="Time" name="Time"></div>
+  <div class="mb-3">
+    <label>Visit Days</label>
+    <select class="form-select" name="visit days" multiple required>
+      <option value="Monday">Monday</option>
+      <option value="Tuesday">Tuesday</option>
+      <option value="Wednesday">Wednesday</option>
+      <option value="Thursday">Thursday</option>
+      <option value="Friday">Friday</option>
+      <option value="Saturday">Saturday</option>
+      <option value="Sunday">Sunday</option>
+      <option value="Daily">Daily</option>
+    </select>
+  </div>
+  <button type="submit" class="btn btn-success">Add Patient</button>
+</form>
+
+<script>
+// Add Patient
+document.getElementById('addForm').addEventListener('submit', async e=>{
+  e.preventDefault();
+  const formData = new FormData(e.target);
+  const obj = {};
+  for (let pair of formData.entries()){
+    if(pair[0]==='visit days'){
+      if(!obj['visit days']) obj['visit days'] = [];
+      obj['visit days'].push(pair[1]);
+    } else obj[pair[0]] = pair[1];
+  }
+  const res = await fetch('/api/patients',{
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body: JSON.stringify(obj)
+  });
+  const result = await res.json();
+  if(result.status==='success'){
+    alert('Patient added!');
+    e.target.reset();
+  } else alert('Error: '+(result.error||'Failed'));
+});
+</script>
+{% endblock %}

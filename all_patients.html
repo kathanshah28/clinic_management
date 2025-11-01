@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>All Patients</h2>
+<table class="table table-striped" id="allTable">
+  <thead></thead>
+  <tbody></tbody>
+</table>
+
+<script>
+async function loadAll(){
+  const res = await fetch('/api/patients');
+  const data = await res.json();
+  const table = document.getElementById('allTable');
+  table.tHead.innerHTML='';
+  table.tBodies[0].innerHTML='';
+
+  if(data.length===0){
+    table.tBodies[0].innerHTML='<tr><td colspan=15>No data</td></tr>';
+    return;
+  }
+
+  // Prepare headers (Patient ID first)
+  const headers = ['Patient_ID', ...Object.keys(data[0]).filter(k=>k!=='Patient_ID')];
+  const headerRow = document.createElement('tr');
+  headers.forEach(k=>{
+    const th = document.createElement('th');
+    th.innerText = k;
+    headerRow.appendChild(th);
+  });
+  table.tHead.appendChild(headerRow);
+
+  data.forEach(row=>{
+    const tr = document.createElement('tr');
+
+    headers.forEach(h=>{
+      const td = document.createElement('td');
+      td.innerText = row[h] || '';
+
+      // Highlight Pending Confirmation
+      if(h==='Attended' && row[h]==='Pending Confirmation'){
+        td.style.backgroundColor = '#fff3cd'; // yellow
+      }
+
+      tr.appendChild(td);
+    });
+
+    table.tBodies[0].appendChild(tr);
+  });
+}
+
+loadAll();
+</script>
+{% endblock %}

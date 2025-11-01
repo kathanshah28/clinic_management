@@ -1,56 +1,191 @@
 {% extends "base.html" %}
 {% block content %}
-<h2>Add Patient</h2>
-<form id="addForm">
-  <div class="mb-3"><input class="form-control" placeholder="Patient ID" name="Patient_ID" required></div>
-  <div class="mb-3"><input class="form-control" placeholder="Name" name="Name" required></div>
-  <div class="mb-3"><input class="form-control" placeholder="Number" name="number" required></div>
-  <div class="mb-3"><input class="form-control" placeholder="Age" name="Age"></div>
-  <div class="mb-3"><input class="form-control" placeholder="Gender" name="Gender"></div>
-  <div class="mb-3"><input class="form-control" placeholder="Occupation" name="Occupation"></div>
-  <div class="mb-3"><input class="form-control" placeholder="Ref. by" name="Ref. by"></div>
-  <div class="mb-3"><input class="form-control" placeholder="Address" name="Address"></div>
-  <div class="mb-3"><input class="form-control" placeholder="Date of joining" name="Date of joining"></div>
-  <div class="mb-3"><input class="form-control" placeholder="Conditions" name="conditions"></div>
-  <div class="mb-3"><input class="form-control" placeholder="Time" name="Time"></div>
-  <div class="mb-3">
-    <label>Visit Days</label>
-    <select class="form-select" name="visit days" multiple required>
-      <option value="Monday">Monday</option>
-      <option value="Tuesday">Tuesday</option>
-      <option value="Wednesday">Wednesday</option>
-      <option value="Thursday">Thursday</option>
-      <option value="Friday">Friday</option>
-      <option value="Saturday">Saturday</option>
-      <option value="Sunday">Sunday</option>
-      <option value="Daily">Daily</option>
-    </select>
+<div class="row justify-content-center mt-4">
+  <div class="col-lg-6 col-md-8 col-sm-10">
+    <div class="card shadow-sm p-4">
+      <h2 class="text-center text-primary mb-4">➕ Add Patient</h2>
+      <form id="addForm">
+        <div class="mb-3">
+          <label for="patientId" class="form-label">Patient ID</label>
+          <input id="patientId" class="form-control" name="Patient_ID" required>
+        </div>
+
+        <div class="mb-3">
+          <label for="name" class="form-label">Name</label>
+          <input id="name" class="form-control" name="Name" required>
+        </div>
+
+        <div class="mb-3">
+          <label for="number" class="form-label">Number</label>
+          <input id="number" class="form-control" name="Number" required>
+        </div>
+
+        <div class="mb-3">
+          <label for="age" class="form-label">Age</label>
+          <input id="age" class="form-control" name="Age" type="number">
+        </div>
+
+        <div class="mb-3">
+          <label for="gender" class="form-label">Gender</label>
+          <select id="gender" class="form-select" name="Gender">
+            <option value="" selected disabled>Select Gender</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label for="occupation" class="form-label">Occupation</label>
+          <input id="occupation" class="form-control" name="Occupation">
+        </div>
+
+        <div class="mb-3">
+          <label for="refby" class="form-label">Ref. by</label>
+          <input id="refby" class="form-control" name="Ref.by">
+        </div>
+
+        <div class="mb-3">
+          <label for="address" class="form-label">Address</label>
+          <input id="address" class="form-control" name="Address">
+        </div>
+
+        <div class="mb-3">
+          <label for="doj" class="form-label">Date of Joining</label>
+          <input id="doj" class="form-control" name="Date of joining" type="date">
+        </div>
+
+        <div class="mb-3">
+          <label for="conditions" class="form-label">Conditions</label>
+          <select id="conditions" class="form-select" name="Conditions">
+            <option value="" selected disabled>Select Condition</option>
+            <option value="Physiotherapy">Physiotherapy</option>
+            <option value="Pain Management">Pain Management</option>
+            <option value="Rehabilitation">Rehabilitation</option>
+            <option value="Post Surgery">Post Surgery</option>
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label for="time" class="form-label">Time</label>
+          <input id="time" class="form-control" name="Time" type="time">
+        </div>
+
+        <!-- Visit Days as checkboxes -->
+        <div class="mb-3">
+          <label class="form-label">Visit Days</label>
+          <div id="visitDaysCheckboxes" class="d-flex flex-wrap gap-2">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="Monday" id="dayMonday">
+              <label class="form-check-label" for="dayMonday">Monday</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="Tuesday" id="dayTuesday">
+              <label class="form-check-label" for="dayTuesday">Tuesday</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="Wednesday" id="dayWednesday">
+              <label class="form-check-label" for="dayWednesday">Wednesday</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="Thursday" id="dayThursday">
+              <label class="form-check-label" for="dayThursday">Thursday</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="Friday" id="dayFriday">
+              <label class="form-check-label" for="dayFriday">Friday</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="Saturday" id="daySaturday">
+              <label class="form-check-label" for="daySaturday">Saturday</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="Sunday" id="daySunday">
+              <label class="form-check-label" for="daySunday">Sunday</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="Daily" id="dayDaily">
+              <label class="form-check-label" for="dayDaily">Daily</label>
+            </div>
+          </div>
+          <!-- Preview selected days -->
+          <input type="text" id="selectedDays" class="form-control mt-2" placeholder="Selected Days" readonly>
+        </div>
+
+        <button type="submit" class="btn btn-success w-100">Add Patient</button>
+      </form>
+    </div>
   </div>
-  <button type="submit" class="btn btn-success">Add Patient</button>
-</form>
+</div>
 
 <script>
-// Add Patient
-document.getElementById('addForm').addEventListener('submit', async e=>{
-  e.preventDefault();
-  const formData = new FormData(e.target);
-  const obj = {};
-  for (let pair of formData.entries()){
-    if(pair[0]==='visit days'){
-      if(!obj['visit days']) obj['visit days'] = [];
-      obj['visit days'].push(pair[1]);
-    } else obj[pair[0]] = pair[1];
-  }
-  const res = await fetch('/api/patients',{
-    method:'POST',
-    headers:{'Content-Type':'application/json'},
-    body: JSON.stringify(obj)
+// Update selected days preview
+const checkboxes = document.querySelectorAll('#visitDaysCheckboxes input[type=checkbox]');
+const selectedField = document.getElementById('selectedDays');
+checkboxes.forEach(cb => {
+  cb.addEventListener('change', () => {
+    const selected = Array.from(checkboxes)
+      .filter(i => i.checked)
+      .map(i => i.value);
+    selectedField.value = selected.join(', ');
   });
-  const result = await res.json();
-  if(result.status==='success'){
-    alert('Patient added!');
-    e.target.reset();
-  } else alert('Error: '+(result.error||'Failed'));
+});
+
+// Add Patient submit
+document.getElementById('addForm').addEventListener('submit', async e => {
+  e.preventDefault();
+  const obj = {};
+  const formData = new FormData(e.target);
+  for (let pair of formData.entries()) {
+    if(pair[0] === 'Visit Days') continue; // handled below
+    obj[pair[0]] = pair[1];
+  }
+  // Collect visit days from checkboxes
+  obj['Visit Days'] = Array.from(checkboxes)
+    .filter(cb => cb.checked)
+    .map(cb => cb.value);
+
+  if(obj['Visit Days'].length === 0){
+    alert('Please select at least one Visit Day');
+    return;
+  }
+
+  try {
+    const res = await fetch('/api/patients', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(obj)
+    });
+    const result = await res.json();
+    if(result.status === 'success'){
+      alert('Patient added successfully!');
+      e.target.reset();
+      selectedField.value = '';
+    } else {
+      alert('Error: ' + (result.error || 'Failed'));
+    }
+  } catch(err) {
+    console.error('Error adding patient:', err);
+    alert('Error adding patient.');
+  }
 });
 </script>
+
+<style>
+.card {
+    border-radius: 15px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+}
+.form-control:focus {
+    box-shadow: 0 0 5px rgba(0,123,255,0.5);
+    border-color: #007bff;
+}
+#visitDaysCheckboxes .form-check {
+    min-width: 120px;
+}
+</style>
 {% endblock %}
